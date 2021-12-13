@@ -25,6 +25,7 @@ async def run(username, password):
     pattern = re.compile('access_token=((?:[a-zA-Z]|\d|\.|-|_)*).*id_token=((?:[a-zA-Z]|\d|\.|-|_)*).*expires_in=(\d*)')
     data = pattern.findall(data['response']['parameters']['uri'])[0]
     access_token = data[0]
+    api_key = input('please enter your API key: ')
     print('\n')
     print('Access Token: \n' + access_token)
     print('\n')
@@ -47,7 +48,7 @@ async def run(username, password):
     print('\n')
     headers['X-Riot-Entitlements-JWT'] = entitlements_token
     
-    headers3 = {"X-Riot-Token": "RGAPI-f3cd0ae7-b5e2-4e1d-ad20-9587c6165644"}
+    headers3 = {"X-Riot-Token": api_key}
     async with session.get('https://eu.api.riotgames.com/val/content/v1/contents?locale=en-US', headers = headers3, json = {}) as r:
         data = await r.json()
     skins = data['skinLevels']
