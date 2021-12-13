@@ -1,2 +1,2 @@
 # Valorant-Store-Checker
-Tool to check store without having to launch the game
+Discord bot that allows you to check your in-game store without having to launch the game
