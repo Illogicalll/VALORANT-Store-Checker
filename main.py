@@ -19,6 +19,17 @@ async def run(username, password):
         'password': input('please enter your password: ')
     }
     
+    print("available regions: eu (europe), na (north america), ap (asia pacific), ko (korea)")
+    region = input('please enter your region: ')
+    options = ['eu', 'na', 'ap', 'ko']
+    valid = False
+    while valid == False:
+        if region.lower() not in options:
+            region = input('invalid choice please pick from either eu, na, ap, ko: ')
+        else:
+            region = region.lower()
+            valid = True
+    
     async with session.put('https://auth.riotgames.com/api/v1/authorization', json=data) as r:
         data = await r.json()
     pattern = re.compile('access_token=((?:[a-zA-Z]|\d|\.|-|_)*).*id_token=((?:[a-zA-Z]|\d|\.|-|_)*).*expires_in=(\d*)')
@@ -45,7 +56,7 @@ async def run(username, password):
 
 
     headers2 = {'Authorization': f'Bearer {access_token}', 'X-Riot-Entitlements-JWT': entitlements_token}
-    async with session.get(f'https://pd.eu.a.pvp.net/store/v2/storefront/{user_id}', headers=headers2, json={}) as r:
+    async with session.get(f'https://pd.{region}.a.pvp.net/store/v2/storefront/{user_id}', headers=headers2, json={}) as r:
         data = await r.json()
     shop = data['SkinsPanelLayout']
     items = shop['SingleItemOffers']
