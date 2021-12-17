@@ -14,4 +14,4 @@ Program that allows you to check your in-game store without having to launch the
 
 - Download ZIP
 - Run main.py
-- Enter Username and Password
+- Enter Username, Password and Region
