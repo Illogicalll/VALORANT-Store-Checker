@@ -3,7 +3,15 @@ import aiohttp
 import asyncio
 
 async def run(username, password):
-    
+    region = input('Enter Region (na/eu/ap/kr): ')
+    choices = ['na','eu','ap','kr']
+    valid = False
+    while valid == False:
+        if region in choices:
+            valid = True
+        else:
+            region = input('Invalid Region, Please Re-Enter (na/eu/ap/kr): ')
+
     session = aiohttp.ClientSession()
     data = {
         'client_id': 'play-valorant-web-prod',
@@ -72,7 +80,7 @@ async def run(username, password):
     headers2 = {'Authorization': f'Bearer {access_token}', 'X-Riot-Entitlements-JWT': entitlements_token, 'Content-Type': 'text/plain'}
         
     json2 = [user_id]
-    async with session.get(f'https://pd.eu.a.pvp.net/store/v2/storefront/{user_id}', headers=headers2, json=json2) as r:
+    async with session.get(f'https://pd.{region}.a.pvp.net/store/v2/storefront/{user_id}', headers=headers2, json=json2) as r:
         data = await r.json()
     shop = data['SkinsPanelLayout']
     items = shop['SingleItemOffers']
