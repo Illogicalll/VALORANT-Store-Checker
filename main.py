@@ -91,3 +91,5 @@ async def run(username, password):
 
 if __name__ == '__main__':
     asyncio.get_event_loop().run_until_complete(run(input('Riot ID: '), input('Password: ')))
+
+input('Press Enter to Exit...')
