@@ -1,13 +1,16 @@
-# VALORANT-Store-Checker
+# OUTDATED + UNMAINTAINED, PROBABLY WON'T WORK
+
+
+VALORANT-Store-Checker
 
 Program that allows you to check your in-game store without having to launch the game
 
-# Usage
+Usage
 
 - Download Latest Release
 - Run .exe
 - Enter Username, Password and Region
 
-# Issues
+Issues
 
 If you have issues with the script, please let me know
